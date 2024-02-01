@@ -14,16 +14,18 @@ def calc_taxes(tax):
 calc_price_products = calc_taxes(0.15)
 calc_price_services = calc_taxes(0.1)
 
+print("\nProducts:".upper())
 for product in products:
     print(
-        f"""{product}: 
-          Price with taxes {calc_price_products(products[product])}"""
+        f"""\n{product.upper()}:
+Price with taxes: {calc_price_products(products[product])}"""
     )
-
+print("-" * 50)
+print("\nServices:".upper())
 for service in services:
     print(
-        f"""{service}: 
-          Price with taxes {calc_price_services(services[service])}"""
+        f"""\n{service.upper()}:
+Price with taxes: {calc_price_services(services[service])}"""
     )
 
 # Execute if the script is run directly
