@@ -168,6 +168,21 @@ def click_on_next_button(driver):
         input("Pressione Enter para continuar...")
 
 
+def scroll_page(driver):
+    try:
+        page_height = driver.execute_script("return document.body.scrollHeight")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
+        actual_height = driver.execute_script("return document.body.scrollHeight")
+        while page_height != actual_height:
+            page_height = actual_height
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(0.5)
+            actual_height = driver.execute_script("return document.body.scrollHeight")
+    except Exception as e:
+        print("Erro ao rolar a página", e)
+
+
 def main():
     try:
         likes_count = 0
@@ -183,8 +198,12 @@ def main():
         # Ir para a página de perfil
         driver.get(insta_profile_url)
         time.sleep(1)
+
+        # Rolar para baixo para pegar todos os posts
+        scroll_page(driver)
         # Clica recebe a quantidade de posts
         links = get_links(driver)
+        print(len(links), "links encontrados")
 
         try:
 
@@ -211,6 +230,7 @@ def main():
         print("\nScript interrompido pelo usuário")
 
     finally:
+        print("Likes:", likes_count)
         driver.quit()  # Certifique-se de fechar o navegador ao finalizar o script
 
 
