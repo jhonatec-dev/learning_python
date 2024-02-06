@@ -10,16 +10,13 @@ from selenium.webdriver import ActionChains
 import pyperclip
 import time
 import os
-import platform
-import random
 
 # Get env variables
 from info import user, password
 
 insta_url = "https://www.instagram.com/"
-comment_text = "Que lindo! 🥰"  # place your comment here
-
-actual_os = platform.system().lower()
+insta_profile_url = insta_url + "studiopiloti/"
+comment_text = "👏🏼👏🏼👏🏼"  # place your comment here
 
 
 def like(driver):
@@ -44,6 +41,27 @@ def like(driver):
         return False
 
 
+def run_script(driver, element):
+    try:
+        pyperclip.copy(comment_text)
+        element.click()
+        element.clear()
+        time.sleep(0.5)
+        act = ActionChains(driver)
+        actual_os = os.name
+        print(actual_os)
+        if actual_os == "nt":
+            act.key_down(Keys.CONTROL).send_keys("v").key_up(Keys.CONTROL).perform()
+        else:
+            act.key_down(Keys.COMMAND).send_keys("v").key_up(Keys.COMMAND).perform()
+
+        time.sleep(1)
+        element.send_keys(Keys.ENTER)
+        time.sleep(1)
+    except Exception as e:
+        print("Erro ao executar script", e)
+
+
 def comment(driver):
     # Comentar
     try:
@@ -58,8 +76,9 @@ def comment(driver):
         comment_field.clear()
         time.sleep(0.5)
         act = ActionChains(driver)
-
-        if actual_os == "windows" or actual_os == "linux":
+        actual_os = os.name
+        print(actual_os)
+        if actual_os == "nt":
             act.key_down(Keys.CONTROL).send_keys("v").key_up(Keys.CONTROL).perform()
         else:
             act.key_down(Keys.COMMAND).send_keys("v").key_up(Keys.COMMAND).perform()
@@ -79,7 +98,9 @@ def comment(driver):
         comment_field.clear()
         time.sleep(0.5)
         act = ActionChains(driver)
-        if actual_os == "windows" or actual_os == "linux":
+        actual_os = os.name
+        print(actual_os)
+        if actual_os == "nt":
             act.key_down(Keys.CONTROL).send_keys("v").key_up(Keys.CONTROL).perform()
         else:
             act.key_down(Keys.COMMAND).send_keys("v").key_up(Keys.COMMAND).perform()
@@ -89,18 +110,7 @@ def comment(driver):
         time.sleep(1)
     except Exception as e:
         print("Erro ao comentar", e)
-
-
-def problem_after_comment(driver):
-    try:
-        time.sleep(1)
-        buttons = driver.find_elements(by=By.TAG_NAME, value="button")
-        btn_ok = [button for button in buttons if button.text == "OK"]
-        btn_ok[0].click()
-        return True
-    except Exception as e:
-        print("Erro ao clicar no botão OK", e)
-        return False
+        print("Não comentou")
 
 
 def login(driver):
@@ -133,41 +143,29 @@ def get_links(driver):
     try:
         # Pega o elemento article que contém todos os posts
         # article = driver.find_element(by=By.TAG_NAME, value="article")
-        article = WebDriverWait(driver, 5).until(
+        article = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.TAG_NAME, "article"))
         )
         # clicar no primeiro post -> pega todas as tags <a> dentro do elemento article
         links = article.find_elements(by=By.TAG_NAME, value="a")
         # Clicar no primeiro link
-        links[0].click()
+        return [link.get_attribute("href") for link in links]
     except Exception as e:
         print("Erro ao pegar links", e)
-        return False
 
 
 def click_on_next_button(driver):
-    # Clicar no botão de curtir
     try:
-        svgs = driver.find_elements(by=By.TAG_NAME, value="svg")
-        print(len(svgs), "SVGS encontrados")
-        next_buttons = [
-            svg for svg in svgs if svg.get_attribute("aria-label") == "Next"
-        ]
-        print(len(next_buttons), "next_buttons encontrados")
-        # like_button precisa ter 24pixels de largura
-        next_button = [
-            next_button
-            for next_button in next_buttons
-            if next_button.size["width"] == 16
-        ][0]
-        print("next_button", next_button)
-        # print("like_button", like_button)
+        time.sleep(2)
+        wait = WebDriverWait(driver, 2)
+        next_button = wait.until(
+            EC.presence_of_element_located((By.XPATH, "//svg[@title='Next']"))
+        )
+        print(next_button)
         next_button.click()
-        time.sleep(1)
-        return True
     except Exception as e:
-        print("Não achou next", e)
-        return False
+        print("Não achou botão next", e)
+        input("Pressione Enter para continuar...")
 
 
 def scroll_page(driver):
@@ -185,28 +183,8 @@ def scroll_page(driver):
         print("Erro ao rolar a página", e)
 
 
-def follow(driver):
-    try:
-        time.sleep(3)
-        buttons = driver.find_elements(by=By.TAG_NAME, value="button")
-        print(len(buttons), "buttons encontrados")
-        follow_button = [button for button in buttons if button.text == "Follow"]
-        print(len(follow_button), "follow_button encontrados")
-        follow_button[0].click()
-        time.sleep(0.5)
-    except Exception as e:
-        print("Erro ao seguir", e)
-
-
-
-def get_random_wait_time():
-    return random.randint(25, 90)
-
-
 def main():
     try:
-        print("\n\nBem vindo ao 007-likeomatic")
-        print("Para encerrar, aperte CTRL + C")
         likes_count = 0
         # Initialize Chrome Service
         servico = Service(ChromeDriverManager().install())
@@ -216,49 +194,33 @@ def main():
         # Login
         time.sleep(1)
         login(driver)
-        insta_profile_url = "_jhonatec"
-        while len(insta_profile_url) > 3:
-            insta_profile_url = input(
-                "\nnome do perfil desejado (exemplo: _jhonatec): "
-            )
 
-            # Ir para a página de perfil
-            driver.get(insta_url + insta_profile_url)
-            time.sleep(1)
-            # Clica em seguir, se não for seguidor
-            follow(driver)
-            get_links(driver)
-            # print(len(links), "links encontrados")
+        # Ir para a página de perfil
+        driver.get(insta_profile_url)
+        time.sleep(1)
 
-            try:
-                should_continue = True
-                has_problem = False
-                while should_continue:
-                    print("\nlikes_count", likes_count)
+        # Rolar para baixo para pegar todos os posts
+        scroll_page(driver)
+        # Clica recebe a quantidade de posts
+        links = get_links(driver)
+        print(len(links), "links encontrados")
 
-                    if like(driver):
-                        if not has_problem:
-                            time_to_wait = get_random_wait_time()
-                            print(
-                                f"Vamos esperar um pouquinho pra não travar tudo rsrsrs ({time_to_wait} segundos)"
-                            )
-                            print("Pode tomar um cafézim \n\n")
-                            time.sleep(
-                                time_to_wait
-                            )  # tempinho pro navegador apreciar o post ;-)
-                        likes_count += 1
-                        time.sleep(1)
-                        comment(driver)
-                        has_problem = problem_after_comment(driver)
-                        time.sleep(1)
+        try:
 
-                    should_continue = click_on_next_button(driver)
-                    time.sleep(1)
-                    # click_on_next_button(driver)
+            for i in range(len(links)):
+                # for i in range(1):
+                print(links[i])
+                driver.get(links[i])
+                time.sleep(1)
+                if like(driver):
+                    likes_count += 1
+                    comment(driver)
+                time.sleep(1)
+                # click_on_next_button(driver)
 
-            except Exception as e:
-                print("Erro GERAL", e)
-                # to do: fazer outra coisa
+        except Exception as e:
+            print("Erro GERAL", e)
+            # to do: fazer outra coisa
 
         while True:
             # Adicione outras ações ou manipulações aqui, se necessário
@@ -268,10 +230,16 @@ def main():
         print("\nScript interrompido pelo usuário")
 
     finally:
-        print("\n\n\nLikes:", likes_count)
+        print("Likes:", likes_count)
         driver.quit()  # Certifique-se de fechar o navegador ao finalizar o script
 
 
 if __name__ == "__main__":
     main()
-    # print(platform.system())
+    # # String original
+    # texto_original = "Olá, 😊!"
+
+    # # Convertendo para Unicode (sequência de escape Unicode)
+    # unicode_string = texto_original.encode('unicode-escape').decode('utf-8')
+
+    # print(unicode_string)
