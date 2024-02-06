@@ -15,11 +15,15 @@ import random
 
 # Get env variables
 from info import user, password
+from emoticons import emoticons
 
 insta_url = "https://www.instagram.com/"
-comment_text = "Que lindo! 🥰"  # place your comment here
 
 actual_os = platform.system().lower()
+
+
+def get_comment_text():
+    return random.choice(emoticons) * random.randint(1, 5)
 
 
 def like(driver):
@@ -53,7 +57,7 @@ def comment(driver):
         time.sleep(1)
         # driver.execute_script(f"arguments[0].value = '{comment}';", comment_field)
         # comment_field.send_keys(comment_text)
-        pyperclip.copy(comment_text)
+        pyperclip.copy(get_comment_text())
         comment_field.click()
         comment_field.clear()
         time.sleep(0.5)
@@ -74,7 +78,7 @@ def comment(driver):
         comment_field = driver.find_element(by=By.XPATH, value=xpath)
         time.sleep(1)
         # comment_field.send_keys(comment_text)
-        pyperclip.copy(comment_text)
+        pyperclip.copy(get_comment_text())
         comment_field.click()
         comment_field.clear()
         time.sleep(0.5)
@@ -198,9 +202,8 @@ def follow(driver):
         print("Erro ao seguir", e)
 
 
-
 def get_random_wait_time():
-    return random.randint(25, 90)
+    return random.randint(5, 35)
 
 
 def main():
@@ -274,4 +277,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # print(platform.system())
