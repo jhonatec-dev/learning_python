@@ -9,7 +9,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ActionChains
 import pyperclip
 import time
-import os
 import platform
 import random
 
