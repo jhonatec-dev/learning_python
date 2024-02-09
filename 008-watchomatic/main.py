@@ -1,16 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import StaleElementReferenceException
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver import ActionChains
-import pyperclip
+
 import time
-import platform
-import random
+
 
 ytb_url = "https://www.youtube.com/c/Jhonatec"
 
@@ -78,7 +72,7 @@ def click_on_ads(driver):
         ads_button.click()
         # time.sleep(1)
         # scroll_page(driver)
-        # some_links = driver.find_elements(by=By.TAG_NAME, value="" + "a" + "")
+        # some_links = driver.find_elements(by=By.TAG_NAME, value="a")
         # if len(some_links) > 0:
         #     # click on random link
         #     some_links[random.randint(0, len(some_links) - 1)].click()
@@ -103,11 +97,9 @@ def increase_playback_rate(driver):
         menu_items = driver.find_elements(
             by=By.CLASS_NAME, value="" + "ytp-menuitem-label" + ""
         )
-        playback_menu = [item for item in menu_items if item.text == "Playback speed"][
-            0
-        ]
+        playback_menu = [i for i in menu_items if i.text == "Playback speed"]
 
-        playback_menu.click()
+        playback_menu[0].click()
         time.sleep(0.5)
         # clicar na opção de velocidade 2
         menu_items = driver.find_elements(
