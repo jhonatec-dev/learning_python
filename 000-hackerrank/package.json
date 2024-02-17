@@ -4,7 +4,7 @@
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules ./src/mmc.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules ./src/index.ts",
     "build": "rimraf ./lib && tsc"
   },
   "keywords": [],
