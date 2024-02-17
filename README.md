@@ -1,2 +1,2 @@
 # learning_python
-First steps in Python with Docker
+First steps in Python

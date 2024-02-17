@@ -136,13 +136,22 @@ def get_links(driver):
     try:
         # Pega o elemento article que contém todos os posts
         # article = driver.find_element(by=By.TAG_NAME, value="article")
-        article = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.TAG_NAME, "article"))
-        )
+        # article = WebDriverWait(driver, 5).until(
+        #     EC.presence_of_element_located((By.TAG_NAME, "article"))
+        # )
+        time.sleep(5)
+        anchors = driver.find_elements(by=By.CLASS_NAME, value="_aagw")
+        print(len(anchors), "anchors encontrados")
+        # anchors_309 = [
+        #     anchor for anchor in anchors if anchor.size["height"] == "309"
+        # ]
+        # print(len(anchors_309), "imgs_309 encontrados")
         # clicar no primeiro post -> pega todas as tags <a> dentro do elemento article
-        links = article.find_elements(by=By.TAG_NAME, value="a")
+        # links = article.find_elements(by=By.TAG_NAME, value="a")
         # Clicar no primeiro link
-        links[0].click()
+        # selecionar o parent do elemento
+
+        anchors[0].click()
     except Exception as e:
         print("Erro ao pegar links", e)
         return False
