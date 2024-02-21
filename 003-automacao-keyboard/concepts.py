@@ -13,7 +13,7 @@ keyboard.write("safari")
 keyboard.press_and_release("enter")
 
 
-for i in range(5):
+for i in range(15):
     time.sleep(3)
     # Abrir uma nova aba anônima
     keyboard.press("command")
@@ -22,11 +22,11 @@ for i in range(5):
     keyboard.release("shift")
     keyboard.release("command")
     for i in range(MAX):
-        time.sleep(1)
+        time.sleep(2)
         # Abrir meu vídeo no youtube hehehehe
-        keyboard.write("https://www.youtube.com/watch?v=gDqMU3sKqbo")
+        keyboard.write("https://www.youtube.com/watch?v=Uzuh1LpAKuw")
         keyboard.press_and_release("enter")
-        time.sleep(5)
+        time.sleep(20)
         if i < (MAX - 1):
             # Abrir mais uma aba
             keyboard.press("command")
@@ -34,7 +34,7 @@ for i in range(5):
             keyboard.release("command")
 
     # esperar antes de fechar as abas
-    time.sleep(3600)
+    time.sleep(600)
 
     for i in range(MAX):
         time.sleep(1)
