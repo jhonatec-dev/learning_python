@@ -8,7 +8,7 @@ MAX = 5
 # Abrir o Safari
 while True:
     time.sleep(2)
-    keyboard.press("command")ew
+    keyboard.press("command")
     keyboard.press("space")
     keyboard.release("space")
     keyboard.release("command")
