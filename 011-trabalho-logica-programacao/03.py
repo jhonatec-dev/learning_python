@@ -15,9 +15,9 @@ menu = {
 }
 
 extras = [
-    ("Não desejo mais nada", 0)
+    ("Não desejo mais nada", 0),
     ("Encadernação Simples", 15),
-    ("Encadernação Capa Dura", 40)
+    ("Encadernação Capa Dura", 40),
 ]
 
 
@@ -33,7 +33,8 @@ def escolha_servico():
         servico = input(">> ").upper()
         if servico not in menu:
             print(
-                "Escolha Inválida.", "Entre com o tipo de serviço desejado novamente..."
+                "Escolha Inválida.",
+                "Entre com o tipo de serviço desejado novamente..."
             )
     return servico
 
@@ -67,7 +68,19 @@ def num_pagina():
 
 def servico_extra():
     """Solicita ao usuário a escolha de algum serviço extra."""
-    print("\nDeseja adicionar mais algum serviço?")
+    option = ""
+    while option not in range(len(extras)):
+        print("\nDeseja adicionar mais algum serviço?")
+        for i, (label, value) in enumerate(extras):
+            print(f"{i} - {label} - R$ {value:.2f}")
+        try:
+            option = int(input(">> "))
+            if option not in range(len(extras)):
+                raise ValueError("invalid")
+        except ValueError:
+            print("Opção Inválida. Tente novamente...")
+            continue
+    return option
 
 
 def main():
@@ -77,6 +90,18 @@ def main():
     servico = escolha_servico()
     paginas = num_pagina()
     extra = servico_extra()
+
+    # Calcula o valor do serviço selecionado * qtde de páginas selecionadas
+    total_servico = menu[servico][1] * paginas
+    # Acrescenta o valor do extra ao total
+    total_servico += extras[extra][1]
+
+    print("\n", f"Total: R$ {total_servico:.2f} ",
+          f"(Serviço: {menu[servico][0]} - R$ {menu[servico][1]:.2f}",
+          f"* páginas: {paginas}",
+          f"+ Extra(s): {extras[extra][0]} - R$ {extras[extra][1]:.2f})")
+
+    print("\nObrigado e volte sempre!")
 
 
 if __name__ == "__main__":
