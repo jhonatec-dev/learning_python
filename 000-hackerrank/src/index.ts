@@ -1,27 +1,35 @@
-function pickingNumbers(a: number[]): number {
+function designerPdfViewer(h: number[], word: string): number {
   // Write your code here
-  // sorting
-  a.sort((a, b) => a - b);
-  // console.log(a);
-  let pairs: number[][] = [];
-  for (let out = 0; out < a.length; out += 1) {
-    let found = false;
-    let newPair: number[] = [];
-    for (let inner = out + 1; inner < a.length; inner += 1) {
-      const diff = Math.abs(a[out] - a[inner]);
-      if (diff < 2) {
-        newPair.push(a[inner]);
-        found = true;
-      }
+  const noSpacesWord = word.split(" ").join("");
+  let tallestHeigh = 0;
+  let result = 0;
+  noSpacesWord.split("").forEach((char) => {
+    const charIndex = char.charCodeAt(0) - 97;
+    const charHeight = h[charIndex];
+    if (charHeight > tallestHeigh) {
+      tallestHeigh = charHeight;
     }
-    if (found) {
-      newPair.unshift(a[out]);
-      pairs.push(newPair);
-    }
-  }
-  const longestLenght = Math.max(...pairs.map((pair) => pair.length));
-  return longestLenght;
+  });
+  result = tallestHeigh * noSpacesWord.length;
+  return result;
 }
 
-const test = [4, 6, 5, 3, 3, 1];
-console.log(pickingNumbers(test));
+/*
+All letters = 1mm wide
+Example
+h=[1 3 1 3 1 4 1 3 2 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5]
+word=' abc'
+
+The heights are a=1 b=3 c=1
+The talleste letter is 3 heigh and there are 3 letters
+
+Result = 3 * 3
+Resulta = 9mm2 (square)
+*/
+
+const h = "1 3 1 3 1 4 1 3 2 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5"
+  .split(" ")
+  .map((char) => +char);
+const word = " abc";
+
+console.log(designerPdfViewer(h, word));

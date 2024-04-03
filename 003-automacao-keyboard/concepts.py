@@ -3,7 +3,7 @@ import keyboard
 
 import time
 
-MAX = 5
+MAX = 15
 
 # Abrir o Safari
 while True:
@@ -24,7 +24,7 @@ while True:
     for i in range(MAX):
         time.sleep(2)
         # Abrir meu vídeo no youtube hehehehe
-        keyboard.write("https://www.youtube.com/watch?v=Uzuh1LpAKuw")
+        keyboard.write("https://youtu.be/gq6fvFjznHE")
         keyboard.press_and_release("enter")
         time.sleep(random.randint(15, 55))
         if i < (MAX - 1):
@@ -33,7 +33,7 @@ while True:
             keyboard.press_and_release("t")
             keyboard.release("command")
     # esperar antes de fechar as abas
-    time.sleep(random.randint(150, 550))
+    time.sleep(random.randint(200, 550))
     time.sleep(1)
     keyboard.press("command")
     keyboard.press_and_release("q")

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": [
-      "es6"
+      "ES2021"
     ],
     "alwaysStrict": true,
     "strictNullChecks": true,
