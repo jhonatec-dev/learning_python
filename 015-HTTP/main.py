@@ -5,7 +5,7 @@ import time
 import requests
 from getItems import get_price
 
-API_URL = "http://localhost:3001"
+API_URL = "https://api.jhonatec.com"
 
 
 def main():
