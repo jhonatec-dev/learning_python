@@ -1,0 +1,261 @@
+{
+  "seller_id": 1168726042,
+  "seller_name": "Mega Mamute",
+  "reputation_level": "5_green",
+  "power_seller_status": "platinum",
+  "official_store_id": 20,
+  "subtitle_types": ["SOLD_QUANTITY"],
+  "installment_info": "10f",
+  "free_shipping": true,
+  "shipping_mode": "me2",
+  "local_pick_up": false,
+  "store_pick_up": false,
+  "logistic_type": "fulfillment",
+  "review_rate": 5,
+  "reviews": {
+    "qualitative_attributes": [],
+    "attributes_quantity": 5,
+    "count": 2334,
+    "pictures_quantity": 44,
+    "rate": 4.8,
+    "summary": {
+      "status": "published",
+      "prompt_version": 3.2,
+      "ai_model": "gpt-4-1106-preview",
+      "last_updated": "2024-04-26T17:05:15Z",
+      "build_version": "knCIv2mK9MfZdxScT2WTBlnnuIuOnz9p62R7rj4uEY4=",
+      "likes": 71,
+      "valorization": 69
+    }
+  },
+  "price": 2276,
+  "original_price": 3665,
+  "currency_id": "BRL",
+  "available_promotions": [
+    {
+      "campaign_id": "P-MLB13949478",
+      "type": "marketplace_campaign",
+      "original_value": 3665,
+      "value": 2276
+    }
+  ],
+  "best_seller_position": 2,
+  "highlights": { "id": "BEST_SELLER" },
+  "credit_view_components": {
+    "pricing": {
+      "installments": 10,
+      "installments_amount": 227.6,
+      "installments_total": 2276,
+      "is_free_installments": true,
+      "original_price": 3665,
+      "actual_price": 2276,
+      "discount": "37%",
+      "with_mercado_credito": false
+    },
+    "widget": { "visible": false },
+    "tooltip": { "visible": false }
+  },
+  "pickers": {
+    "RAM_MEMORY-HARD_DRIVE_DATA_STORAGE_CAPACITY-SSD_DATA_STORAGE_CAPACITY": [
+      {
+        "catalog_product_id": "MLB23380259",
+        "selected": true,
+        "picker_type": "normal",
+        "value": "4 GB RAM | 256 GB SSD"
+      },
+      {
+        "catalog_product_id": "MLB21709699",
+        "selected": false,
+        "picker_type": "smart",
+        "value": "8 GB RAM | 256 GB SSD"
+      },
+      {
+        "catalog_product_id": "MLB21835737",
+        "selected": false,
+        "picker_type": "smart",
+        "value": "8 GB RAM | 512 GB SSD"
+      }
+    ],
+    "COLOR": [
+      {
+        "catalog_product_id": "MLB23380259",
+        "selected": true,
+        "picker_type": "normal",
+        "value": "Grafite"
+      }
+    ],
+    "PROCESSOR_BRAND-PROCESSOR_LINE-PROCESSOR_MODEL": [
+      {
+        "catalog_product_id": "MLB21709699",
+        "selected": false,
+        "picker_type": "smart",
+        "value": "Intel"
+      },
+      {
+        "catalog_product_id": "MLB23380259",
+        "selected": true,
+        "picker_type": "normal",
+        "value": "Intel Core i3 1215U"
+      },
+      {
+        "catalog_product_id": "MLB24123596",
+        "selected": false,
+        "picker_type": "smart",
+        "value": "Intel Intel® Core™ i5-1235U (1.3 GHz, até 4.4GHz, 12 MB L3 Cache)"
+      }
+    ],
+    "OS_NAME-OS_VERSION-OS_EDITION": [
+      {
+        "catalog_product_id": "MLB21709699",
+        "selected": false,
+        "picker_type": "smart",
+        "value": "Windows"
+      },
+      {
+        "catalog_product_id": "MLB23380259",
+        "selected": true,
+        "picker_type": "normal",
+        "value": "Windows 11 Home"
+      }
+    ],
+    "GRAPHIC_CARD": [
+      {
+        "catalog_product_id": "MLB24123596",
+        "selected": false,
+        "picker_type": "smart",
+        "value": "Intel Iris Xe"
+      },
+      {
+        "catalog_product_id": "MLB23380259",
+        "selected": true,
+        "picker_type": "normal",
+        "value": "Intel® UHD Graphics"
+      }
+    ]
+  },
+  "pickers_attributes": {
+    "RAM_MEMORY-HARD_DRIVE_DATA_STORAGE_CAPACITY-SSD_DATA_STORAGE_CAPACITY": {
+      "count": 3,
+      "component": "picker",
+      "picker_label": "Capacidade"
+    },
+    "COLOR": { "count": 1, "component": "read_only", "picker_label": "Cor" },
+    "PROCESSOR_BRAND-PROCESSOR_LINE-PROCESSOR_MODEL": {
+      "count": 3,
+      "component": "picker",
+      "picker_label": "Processador"
+    },
+    "OS_NAME-OS_VERSION-OS_EDITION": {
+      "count": 2,
+      "component": "picker",
+      "picker_label": "Sistema operacional"
+    },
+    "GRAPHIC_CARD": {
+      "count": 2,
+      "component": "picker",
+      "picker_label": "Placa de vídeo"
+    }
+  },
+  "gallery": { "max_size": "500x335" },
+  "catalog_parent_id": "MLB21709694",
+  "catalog_product_id": "MLB23380259",
+  "item_id": "MLB3655660849",
+  "category_id": "MLB1652",
+  "vertical": "core",
+  "domain_id": "MLB-NOTEBOOKS",
+  "item_condition": "new",
+  "listing_type_id": "gold_pro",
+  "cart_content": true,
+  "deal_ids": ["MLB3976", "MLB32897"],
+  "item_attribute_brand_id": "206",
+  "stock_type": "normal",
+  "shipping_conditions": "free_mandatory",
+  "shipping_promise": {
+    "destination": "05211120",
+    "showing_melitag": false,
+    "showing_promises": [],
+    "showing_upselling": false,
+    "address_options": [],
+    "agency_options": [],
+    "shipping_failure_message": "N/A"
+  },
+  "item_origins": [],
+  "pushing_puis": false,
+  "showing_puis": false,
+  "bo_pick_up_conditions": "no_bo_pick_up",
+  "collapsed_pickers": false,
+  "has_roda": false,
+  "has_garex": false,
+  "pdp_type": "GREEN_WITH_OFFER",
+  "item_attributes": "discount,AVAILABLE_STOCK",
+  "cac_item": false,
+  "showing_questions_ai_button": false,
+  "cac_status": "after_dispatch",
+  "qadb_info": [
+    { "question_id": 13039619256, "invented": false },
+    { "question_id": 13039413570, "invented": false },
+    { "question_id": 13038197449, "invented": false },
+    { "question_id": 13037616101, "invented": false },
+    { "question_id": 13037911294, "invented": false },
+    { "question_id": 13035752051, "invented": false },
+    { "question_id": 13036041006, "invented": false },
+    { "question_id": 13032722294, "invented": false },
+    { "question_id": 13032557324, "invented": false },
+    { "question_id": 13032109247, "invented": false },
+    { "question_id": 13032550914, "invented": false },
+    { "question_id": 13032306098, "invented": false },
+    { "question_id": 13029790861, "invented": false },
+    { "question_id": 13025276642, "invented": false },
+    { "question_id": 13021940028, "invented": false }
+  ],
+  "has_unselected_pickers": false,
+  "seo": {
+    "seo_experiments": {
+      "status": "success",
+      "experiment_list": [
+        {
+          "id": "vpp_ping",
+          "is_enabled": false,
+          "is_active": false,
+          "should_apply": false,
+          "group": "Control",
+          "executed_successfully": true
+        },
+        {
+          "id": "hermione",
+          "is_enabled": false,
+          "is_active": false,
+          "should_apply": false,
+          "group": "Control",
+          "executed_successfully": true
+        }
+      ]
+    },
+    "seo_top_keywords": [
+      { "keyword": "mini notebook", "keyword_source": "MLMA_GRAPH" },
+      { "keyword": "laptop samsung", "keyword_source": "MLMA_GRAPH" },
+      { "keyword": "galaxy book pro", "keyword_source": "MLMA_GRAPH" },
+      { "keyword": "notebook samsung", "keyword_source": "MLMA_GRAPH" },
+      { "keyword": "notebook core i3", "keyword_source": "MLMA_GRAPH" },
+      { "keyword": "notebook samsung i5", "keyword_source": "MLMA_GRAPH" },
+      { "keyword": "galaxy book pro 360", "keyword_source": "MLMA_GRAPH" }
+    ]
+  },
+  "bank_discounts": [],
+  "interstitial": {
+    "buy_now": [
+      { "type": "MELI_PLUS", "result": "NOT_AVAILABLE" },
+      {
+        "type": "CREDIT_CARD_MP",
+        "result": "NOT_AVAILABLE",
+        "reason": "This intervention is not available for this site and device."
+      }
+    ]
+  },
+  "tags": [
+    "good_quality_thumbnail",
+    "extended_warranty_eligible",
+    "immediate_payment",
+    "cart_eligible"
+  ]
+}

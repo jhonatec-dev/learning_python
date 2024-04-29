@@ -31,7 +31,7 @@ def like(driver):
         svgs = driver.find_elements(by=By.TAG_NAME, value="svg")
         print(len(svgs), "SVGS encontrados")
         like_buttons = [
-            svg for svg in svgs if svg.get_attribute("aria-label") == "Like"
+            svg for svg in svgs if svg.get_attribute("aria-label") == "Curtir"
         ]
         # like_button precisa ter 24pixels de largura
         like_button = [
@@ -50,7 +50,7 @@ def like(driver):
 def comment(driver):
     # Comentar
     try:
-        xpath = "//textarea[contains(@aria-label, 'comment')]"
+        xpath = "//textarea[contains(@aria-label, 'Adicione um comentário...')]"
         comment_field = driver.find_element(by=By.XPATH, value=xpath)
         print("elemento", comment_field)
         time.sleep(1)
@@ -163,7 +163,7 @@ def click_on_next_button(driver):
         svgs = driver.find_elements(by=By.TAG_NAME, value="svg")
         print(len(svgs), "SVGS encontrados")
         next_buttons = [
-            svg for svg in svgs if svg.get_attribute("aria-label") == "Next"
+            svg for svg in svgs if svg.get_attribute("aria-label") == "Avançar"
         ]
         print(len(next_buttons), "next_buttons encontrados")
         # like_button precisa ter 24pixels de largura
@@ -202,7 +202,7 @@ def follow(driver):
         time.sleep(3)
         buttons = driver.find_elements(by=By.TAG_NAME, value="button")
         print(len(buttons), "buttons encontrados")
-        follow_button = [button for button in buttons if button.text == "Follow"]
+        follow_button = [button for button in buttons if button.text == "Seguir"]
         print(len(follow_button), "follow_button encontrados")
         follow_button[0].click()
         time.sleep(0.5)

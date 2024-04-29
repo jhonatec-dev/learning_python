@@ -29,7 +29,7 @@ def get_site_info(itemLink):
         soup = BeautifulSoup(response.text, "html.parser")
         # save the content of the site in a file with the same url name
         with open(id + ".html", "w", encoding="utf-8") as file:
-            file.write(soup.prettify())
+            file.write(soup.get_text())
     soup = scrap_site_info(id)
     if name == "kabum":
         read_from_kabum(soup)
@@ -58,6 +58,9 @@ def read_from_kabum(soup):
         print("\nReading from Kabum")
         # get the title
         title = soup.find("h1").text
+        # get the og:image
+        og_image = soup.find("meta", property="og:image")["content"]
+        print(og_image)
         # get the price
         finalPrice = soup.find(class_="finalPrice").text
         regularPrice = soup.find(class_="regularPrice").text
