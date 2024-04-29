@@ -18,7 +18,7 @@ def get_random_wait_time():
     return random.randint(5, 35)
 
 
-URL = "https://www.amazon.com.br/dp/8501304379"
+URL = "https://www.amazon.com.br/dp/B0CP9VMV61"
 
 
 def main():
