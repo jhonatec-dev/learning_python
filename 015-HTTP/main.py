@@ -27,8 +27,7 @@ def main():
             for link in item["links"]:
                 get_price(driver, link, id)
 
-        while True:
-            time.sleep(1)
+        time.sleep(1)
 
     except KeyboardInterrupt:
         print("\nScript interrompido pelo usuário")

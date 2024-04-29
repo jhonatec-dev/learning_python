@@ -9,6 +9,8 @@ def get_from_amazon(soup: BeautifulSoup):
         finalPrice += soup.find(class_="a-price-fraction").text
         regularPrice = soup.find(class_="best-offer-name").text
 
+        print(f"finalPrice: {finalPrice} | regularPrice: {regularPrice}")
+
         # convert the string R$ 1.000,00 to 1000.00
         finalPrice = finalPrice.replace("R$", "")
         finalPrice = finalPrice.replace(".", "")
@@ -16,11 +18,16 @@ def get_from_amazon(soup: BeautifulSoup):
         finalPrice = float(finalPrice)
 
         # extract the price from the string including the decimal part
-        regularPrice = re.findall(r"\d+\.\d+\,\d+", regularPrice)
+        regularPrice = re.findall(r"\d+\.?\d+\,\d+", regularPrice)
+        print(regularPrice)
         regularPrice = regularPrice[0]
         regularPrice = regularPrice.replace(".", "")
         regularPrice = regularPrice.replace(",", ".")
         regularPrice = float(regularPrice)
+
+        # If the price is minor, than has no taxes
+        if regularPrice < finalPrice:
+            regularPrice = finalPrice
 
         return {
             "finalPrice": finalPrice,
@@ -68,9 +75,7 @@ def get_from_mercado_livre(soup: BeautifulSoup):
         data = json.loads(new_matches[0])
 
         finalPrice = data["price"]
-        regularPrice = data["credit_view_components"]
-        ["pricing"]
-        ["installments_total"]
+        regularPrice = data["credit_view_components"]["pricing"]["installments_total"]
 
         return {
             "finalPrice": finalPrice,
