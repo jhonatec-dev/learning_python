@@ -1,25 +1,45 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
 import requests
+from getItems import get_price
 
-url = "http://localhost:3001/scrapping/items"
+API_URL = "http://localhost:3001"
 
-response = requests.get(url)
 
-data = response.json()
+def main():
+    try:
+        print("\n\nIniciando")
+        print("Para encerrar, aperte CTRL + C \n\n")
+        # Initialize Chrome Service
+        servico = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=servico)
 
-for item in data:
-    id = item["_id"]
-    name = item["title"]
-    print(f"{id} - {name}")
+        # Get items from API
+        response = requests.get(f"{API_URL}/scrapping/items")
 
-    for link in item["links"]:
-        url = link["url"]
-        seller = link["idSeller"]["name"]
-        print(f"  - {url} - {seller}")
-        bestFinalPrice = link["bestFinalPrice"]
-        bestWholePrice = link["bestWholePrice"]
-        bestPriceDate = link["bestPriceDate"]
-        print(f"  - {url} - {bestFinalPrice} - {bestWholePrice} - {bestPriceDate}")
-        actualFinalPrice = link["actualFinalPrice"]
-        actualWholePrice = link["actualWholePrice"]
-        actualPriceDate = link["actualPriceDate"]
-        print(f"  - {url} - {actualFinalPrice} - {actualWholePrice} - {actualPriceDate}")
+        data = response.json()
+
+        for item in data:
+            id = item["_id"]
+
+            for link in item["links"]:
+                get_price(driver, link, id)
+
+        while True:
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        print("\nScript interrompido pelo usuário")
+
+    except Exception as e:
+        print(f"Erro: {e}")
+
+    finally:
+        # Close the browser
+        driver.quit()
+
+
+if __name__ == "__main__":
+    main()
