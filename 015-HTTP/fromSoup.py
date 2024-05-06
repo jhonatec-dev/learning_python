@@ -76,7 +76,10 @@ def get_from_kabum(soup: BeautifulSoup):
         }
     except Exception as e:
         print(f"Erro Kabum: {e}")
-        return None
+        return {
+            "finalPrice": 9999.99,
+            "regularPrice": 9999.99,
+        }
 
 
 def get_from_mercado_livre(soup: BeautifulSoup):
@@ -97,5 +100,8 @@ def get_from_mercado_livre(soup: BeautifulSoup):
             "regularPrice": regularPrice,
         }
     except Exception as e:
-        print(f"Erro Kabum: {e}")
-        return None
+        print(f"Erro MercadoLivre: {e}")
+        return {
+            "finalPrice": 9999.99,
+            "regularPrice": 9999.99,
+        }

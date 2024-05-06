@@ -8,12 +8,12 @@ import requests
 from fromSoup import get_from_amazon, get_from_kabum, get_from_mercado_livre
 
 API_URL = "https://api.jhonatec.com"
-API_KEY = """eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-.eyJfaWQiOiI2NTkzMjk2MTdhMzBiMDY5MGQ1NmUyNzUiLCJlbWF
-pbCI6ImNvbnRhdG9AamhvbmF0ZWMuY29tIiwicm9sZSI6ImFkbWluIiw
-ibmFtZSI6IkFkbWluIEpob25hdGVjIiwicGhvbmUiOiIzMzk5NzAyNjg2
-OSIsImlhdCI6MTcxNDU3MTMzOCwiZXhwIjoxNzE3MTYzMzM4fQ
-.luneP7zvRW8RyEILWY7r741KoCkU0FYoOpvuCg0ydIE"""
+API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+API_KEY += ".eyJfaWQiOiI2NTkzMjk2MTdhMzBiMDY5MGQ1NmUyNzUiLCJlbWF"
+API_KEY += "pbCI6ImNvbnRhdG9AamhvbmF0ZWMuY29tIiwicm9sZSI6ImFkbWluIiw"
+API_KEY += "ibmFtZSI6IkFkbWluIEpob25hdGVjIiwicGhvbmUiOiIzMzk5NzAyNjg2"
+API_KEY += "OSIsImlhdCI6MTcxNDU3MTMzOCwiZXhwIjoxNzE3MTYzMzM4fQ"
+API_KEY += ".luneP7zvRW8RyEILWY7r741KoCkU0FYoOpvuCg0ydIE"
 
 
 def bypass_amazon_captcha(driver: WebDriver):
