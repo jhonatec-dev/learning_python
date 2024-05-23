@@ -13,6 +13,7 @@ get_path_with_index(file_dir, list_paths)
 while True:
     time.sleep(2)
     keyboard.press_and_release("windows")
+    time.sleep(1)
     keyboard.write("edge")
     time.sleep(2)
     keyboard.press_and_release("enter")
